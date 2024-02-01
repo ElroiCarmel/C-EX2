@@ -1,3 +1,4 @@
 
 
 void inputMat();
+void updateDistMat();
