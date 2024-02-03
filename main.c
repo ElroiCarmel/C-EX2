@@ -4,8 +4,8 @@
 int main()
 {
     char option;
-    int matrix[10][10];
-    int dist[10][10];
+    int matrix[SIZE][SIZE];
+    int dist[SIZE][SIZE];
     do {
     printf("Enter an option:");
     scanf(" %c", &option);
@@ -13,13 +13,15 @@ int main()
     {
     case 'A':
         inputMat(matrix);
+        printMat(matrix);
         updateDistMat(dist, matrix);
+        printMat(dist);
         break;
     case 'B':
         int a,b;
         printf("Enter the vertices: ");
         scanf("%d%d", &a, &b);
-        if (dist[a][b])
+        if (dist[a][b] != INF)
         {
             printf("True\n");
         } else
@@ -27,8 +29,18 @@ int main()
             printf("False\n");
         }
         break;
-    default:
-        printf("You need to enter A/B/C/D!\n");
+    case 'C':
+        int u, v;
+        printf("Enter the vertices: ");
+        scanf("%d%d", &u, &v);
+        if (dist[u][v] == INF)
+        {
+            printf("-1\n");
+        } else
+        {
+            printf("%d\n", dist[u][v]);
+        }
+        break;
     } 
     } while (option != 'D');
     return 0;
