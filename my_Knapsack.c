@@ -1,25 +1,33 @@
 #include <stdio.h>
 
-#define SIZE 6
-#define CAPACITY 15
+#define SIZE 5
+#define CAPACITY 20
 
 int knapSack();
 void inputValues();
 void inputWeights();
+void inputItems();
 void printHelpMat();
 void printArr();
+void printChosenItems();
 
 int main()
 {
-    int w[SIZE] = {9,6,3,4,5,2};
-    int v[SIZE] = {4,8,7,1,2,10};
-    int s[SIZE];
-    int maxVal = knapSack(w, v, s);
-    printf("%d\n", maxVal);
+    int weights[SIZE], values[SIZE], isChosen[SIZE];
+    char items[SIZE];
+    printf("Enter items (chars): ");
+    inputItems(items);
+    printf("Enter values: ");
+    inputValues(values);
+    printf("Enter wights: ");
+    inputWeights(weights);
+    int ans = knapSack(weights, values, isChosen);
+    printf("The maximum aggregated value is: %d\n", ans);
+    printChosenItems(items, isChosen);
     return 0;
 }
 
-int knapSack (int weights[], int values[] , int selected_bool[])
+int knapSack(int weights[], int values[] , int selected_bool[])
 {
     int row = SIZE +1, col = CAPACITY + 1;
     int mat[row][col], i, j;
@@ -83,6 +91,15 @@ void inputValues(int values[])
     }
 }
 
+void inputItems(char items[])
+{
+    int i;
+    for (i = 0; i < SIZE; i++)
+    {
+        scanf(" %c", &items[i]);
+    }
+}
+
 void printHelpMat(int mat[SIZE+1][CAPACITY+1])
 {
     int i, j;
@@ -106,4 +123,17 @@ void printArr(int arr[], int length)
         printf("%d, ", arr[i]);
     }
     printf("]\n");
+}
+
+void printChosenItems(char items[], int selected_bool[])
+{
+    int i;
+    for (i = 0; i<SIZE; i++)
+    {
+        if (selected_bool[i])
+        {
+            printf("%c ", items[i]);
+        }
+    }
+    printf("\n");
 }
