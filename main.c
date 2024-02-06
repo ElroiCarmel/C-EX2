@@ -7,19 +7,15 @@ int main()
     int matrix[SIZE][SIZE];
     int dist[SIZE][SIZE];
     do {
-    printf("Enter an option:");
     scanf(" %c", &option);
     switch (option)
     {
     case 'A':
         inputMat(matrix);
-        printMat(matrix);
         updateDistMat(dist, matrix);
-        printMat(dist);
         break;
     case 'B':
         int a,b;
-        printf("Enter the vertices: ");
         scanf("%d%d", &a, &b);
         if (dist[a][b] != INF)
         {
@@ -31,7 +27,6 @@ int main()
         break;
     case 'C':
         int u, v;
-        printf("Enter the vertices: ");
         scanf("%d%d", &u, &v);
         if (dist[u][v] == INF)
         {
