@@ -17,7 +17,7 @@ int main()
     case 'B':
         int a,b;
         scanf("%d%d", &a, &b);
-        if (dist[a][b] != INF)
+        if (dist[a][b] > 0 && dist[a][b] < INF)
         {
             printf("True\n");
         } else
@@ -28,12 +28,12 @@ int main()
     case 'C':
         int u, v;
         scanf("%d%d", &u, &v);
-        if (dist[u][v] == INF)
-        {
-            printf("-1\n");
-        } else
+        if (dist[u][v] > 0 && dist[u][v] < INF)
         {
             printf("%d\n", dist[u][v]);
+        } else
+        {
+            printf("-1\n");
         }
         break;
     } 
