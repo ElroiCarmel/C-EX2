@@ -7,8 +7,6 @@ int knapSack();
 void inputValues();
 void inputWeights();
 void inputItems();
-void printHelpMat();
-void printArr();
 void printChosenItems();
 
 int main()
@@ -68,8 +66,6 @@ int knapSack(int weights[], int values[] , int selected_bool[])
             w = w - weights[i-1];
         }
     }
-    printHelpMat(mat);
-    printArr(selected_bool, SIZE);
     return mat[row-1][col-1];
 }
 
@@ -98,31 +94,6 @@ void inputItems(char items[])
     {
         scanf(" %c", &items[i]);
     }
-}
-
-void printHelpMat(int mat[SIZE+1][CAPACITY+1])
-{
-    int i, j;
-    for (i = 0; i<SIZE+1; i++)
-    {
-        printf("[");
-        for (j = 0; j<CAPACITY+1; j++)
-        {
-            printf("%d, ", mat[i][j]);
-        }
-        printf("]\n");
-    }
-}
-
-void printArr(int arr[], int length)
-{
-    printf("[");
-    int i;
-    for (i = 0; i < length; i++)
-    {
-        printf("%d, ", arr[i]);
-    }
-    printf("]\n");
 }
 
 void printChosenItems(char items[], int selected_bool[])
