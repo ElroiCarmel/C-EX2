@@ -11,17 +11,18 @@ void printChosenItems();
 
 int main()
 {
-    int weights[SIZE], values[SIZE], isChosen[SIZE];
+    int weights[SIZE], values[SIZE], isChosen[SIZE], i;
     char items[SIZE];
-    printf("Enter items (chars): ");
-    inputItems(items);
-    printf("Enter values: ");
-    inputValues(values);
-    printf("Enter wights: ");
-    inputWeights(weights);
-    int ans = knapSack(weights, values, isChosen);
-    printf("The maximum aggregated value is: %d\n", ans);
+    for (i = 0; i < SIZE; i++)
+    {
+        scanf(" %c", &items[i]);
+        scanf("%d%d", &values[i], &weights[i]);
+    }
+    int mp = knapSack(weights, values, isChosen);
+    printf("Maximum profit: %d\n", mp);
+    printf("Selected items:");
     printChosenItems(items, isChosen);
+    
     return 0;
 }
 
@@ -103,7 +104,7 @@ void printChosenItems(char items[], int selected_bool[])
     {
         if (selected_bool[i])
         {
-            printf("%c ", items[i]);
+            printf(" %c", items[i]);
         }
     }
     printf("\n");
