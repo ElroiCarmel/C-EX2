@@ -37,7 +37,7 @@ int main()
         }
         break;
     } 
-    } while (option != 'D');
+    } while (option != 'D' && option != EOF);
     return 0;
 }
 
